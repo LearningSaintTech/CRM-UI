@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import ProtectedRoute from './Components/commonComponent/protectedroutes';
+import Home from './Components/homeComponent/Home';
+import Login from './Components/authComponent/Login';
+import AdminDashboard from "./Components/dashboard/AdminDashboard";
+import UserDashboard from "./Components/dashboard/UserDashboard";
+import OAuth2RedirectHandler from './Components/googleOauth2/Oauth2RedirectHandler';
+import Logout from './Components/authComponent/Logout';
+const App = () => {
+   
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/admin" element={<AdminDashboard  />} />
+            <Route path="/user" element={<UserDashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler  />} />
+        </Routes>
+    );
+};
 
 export default App;
