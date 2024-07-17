@@ -43,7 +43,7 @@ const OAuth2RedirectHandler = () => {
           dispatch(setUser(currentUser));
           
           if (roles.includes('ADMIN')) {
-            navigate('/admin', { state: { from: location } });
+            navigate('/adminHome', { state: { from: location } });
           } else if (roles.includes('USER')) {
             navigate('/user', { state: { from: location } });
           } else {
